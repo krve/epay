@@ -1,0 +1,113 @@
+<?php
+
+namespace Epay;
+
+use Epay\Error\EpayException;
+
+class Subscription extends Api
+{
+    protected static $apiURL = 'https://recurring.api.epay.eu/v1/RecurringSOAP.svc?singleWsdl';
+
+    protected static $required = ['customer', 'plan'];
+
+    /**
+     * Delete the subscription
+     *
+     * @return bool
+     */
+    public function delete()
+    {
+        $payload = [
+            'subscriptionplan' => [
+                'subscriptionplanid' => $this->id,
+            ]
+        ];
+
+        $response = static::subRequest('deletesubscriptionplan', $payload);
+
+        if ($response->result == true) {
+            return true;
+        }
+
+        throw new EpayException($response->message);
+    }
+
+    /**
+     * Create a new subscription
+     *
+     * @param  array  $options
+     * @return \Epay\Subscription
+     */
+    public static function create(array $options)
+    {
+        static::validate($options);
+
+        $plan = Plan::retrieve($options['plan']);
+
+        return $plan->signup($options['customer']);
+    }
+
+    /**
+     * Find the subscription by the id
+     *
+     * @param  integer $subscription_id
+     * @return \Epay\Subscription
+     */
+    public static function retrieve($subscription_id)
+    {
+        $payload = [
+            'subscriptionplan' => [
+                'subscriptionplanid' => $subscription_id
+            ],
+        ];
+
+        $response = static::subRequest('getsubscriptionplan', $payload);
+
+        if ($response->result == true && count((array)$response->subscriptionplan) > 0) {
+            $subscription = $response->subscriptionplan;
+
+            return new self([
+                'id' => $subscription_id,
+                'plan' => $subscription->recurringplanid,
+                'customer' => $subscription->subscriptionid,
+                'created' => $subscription->created,
+            ]);
+        }
+
+        throw new EpayException($response->message);
+    }
+
+    /**
+     * Find the subscription by the plan and the customer
+     *
+     * @param  integer $plan
+     * @param  integer $customer
+     * @return \Epay\Subscription
+     */
+    public static function getByPlanAndCustomer($plan, $customer)
+    {
+        $payload = [
+            'recurringplan' => [
+                'recurringplanid' => $plan,
+            ],
+            'subscription' => [
+                'subscriptionid' => $customer
+            ],
+        ];
+
+        $response = static::subRequest('listsubscriptionplan', $payload);
+
+        if ($response->result == true && count((array)$response->subscriptionplanlist) > 0) {
+            $list = $response->subscriptionplanlist;
+            $subscription = $list->subscriptionplan;
+
+            if (is_array($subscription)) {
+                return static::retrieve($subscription[count($subscription) - 1]->subscriptionplanid);
+            }
+
+            return static::retrieve($subscription->subscriptionplanid);
+        }
+
+        throw new EpayException($response->message);
+    }
+}

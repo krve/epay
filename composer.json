@@ -1,0 +1,27 @@
+{
+    "name": "krve/epay",
+    "description": "Epay PHP Libary",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kristoffer Vestergaard",
+            "email": "kristoffer@krve.io"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.3",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-soap": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "vlucas/phpdotenv": "^2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Epay\\": "src/"
+        }
+    }
+}
