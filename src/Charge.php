@@ -4,7 +4,6 @@ namespace Epay;
 
 use Epay\Error\Errors;
 use Epay\Error\EpayException;
-use Epay\Error\OptionRequired;
 
 class Charge extends Api
 {
@@ -13,10 +12,11 @@ class Charge extends Api
     protected static $required = ['amount', 'order', 'customer'];
 
     /**
-     * Create a new charge
+     * Creates a new charge
      *
-     * @param  array  $options
+     * @param array $options
      * @return \Epay\Charge
+     * @throws \Epay\Error\EpayException
      */
     public static function create(array $options)
     {
