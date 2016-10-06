@@ -21,8 +21,10 @@ class Plan extends Api
     /**
      * Signup a new customer for the plan
      *
-     * @param  integer $customer
+     * @param $customer
+     *
      * @return \Epay\Subscription
+     * @throws \Epay\Error\EpayException
      */
     public function signup($customer)
     {
@@ -48,6 +50,7 @@ class Plan extends Api
      * Delete the plan
      *
      * @return bool
+     * @throws \Epay\Error\EpayException
      */
     public function delete()
     {
@@ -69,8 +72,11 @@ class Plan extends Api
     /**
      * Create a new plan
      *
-     * @param  array  $options
+     * @param array $options
+     *
      * @return \Epay\Plan
+     * @throws \Epay\Error\EpayException
+     * @throws \Exception
      */
     public static function create(array $options)
     {
@@ -126,8 +132,10 @@ class Plan extends Api
     /**
      * Find the specified recurring plan
      *
-     * @param  integer $recurring_plan_id
+     * @param $recurring_plan_id
+     *
      * @return \Epay\Plan
+     * @throws \Epay\Error\EpayException
      */
     public static function retrieve($recurring_plan_id)
     {

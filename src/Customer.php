@@ -40,6 +40,7 @@ class Customer extends Api
      * Delete the customer
      *
      * @return bool
+     * @throws \Epay\Error\EpayException
      */
     public function delete()
     {
@@ -59,8 +60,10 @@ class Customer extends Api
     /**
      * Find a customer by the customer_id
      *
-     * @param  integer $customer_id
+     * @param $customer_id
+     *
      * @return \Epay\Customer
+     * @throws \Epay\Error\EpayException
      */
     public static function retrieve($customer_id)
     {

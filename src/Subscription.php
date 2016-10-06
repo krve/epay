@@ -14,6 +14,7 @@ class Subscription extends Api
      * Delete the subscription
      *
      * @return bool
+     * @throws \Epay\Error\EpayException
      */
     public function delete()
     {
@@ -35,7 +36,8 @@ class Subscription extends Api
     /**
      * Create a new subscription
      *
-     * @param  array  $options
+     * @param array $options
+     *
      * @return \Epay\Subscription
      */
     public static function create(array $options)
@@ -50,8 +52,10 @@ class Subscription extends Api
     /**
      * Find the subscription by the id
      *
-     * @param  integer $subscription_id
+     * @param $subscription_id
+     *
      * @return \Epay\Subscription
+     * @throws \Epay\Error\EpayException
      */
     public static function retrieve($subscription_id)
     {
@@ -80,9 +84,11 @@ class Subscription extends Api
     /**
      * Find the subscription by the plan and the customer
      *
-     * @param  integer $plan
-     * @param  integer $customer
+     * @param $plan
+     * @param $customer
+     *
      * @return \Epay\Subscription
+     * @throws \Epay\Error\EpayException
      */
     public static function getByPlanAndCustomer($plan, $customer)
     {
