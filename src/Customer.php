@@ -2,7 +2,7 @@
 
 namespace Epay;
 
-use Epay\Error\Errors;
+use Epay\Error\ErrorParser;
 use Epay\Error\EpayException;
 
 class Customer extends Api
@@ -54,7 +54,7 @@ class Customer extends Api
             return true;
         }
 
-        throw new EpayException(Errors::getMessage($response->epayresponse));
+        throw new EpayException(ErrorParser::getMessage($response->epayresponse));
     }
 
     /**
@@ -87,6 +87,6 @@ class Customer extends Api
             );
         }
 
-        throw new EpayException(Errors::getMessage($response->epayresponse));
+        throw new EpayException(ErrorParser::getMessage($response->epayresponse));
     }
 }

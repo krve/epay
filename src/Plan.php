@@ -2,7 +2,7 @@
 
 namespace Epay;
 
-use Epay\Error\Errors;
+use Epay\Error\ErrorParser;
 use Epay\Error\EpayException;
 
 class Plan extends Api
@@ -109,7 +109,7 @@ class Plan extends Api
             return static::retrieve($id);
         }
 
-        throw new EpayException(Errors::getMessage($response->epayresponse));
+        throw new EpayException(ErrorParser::getMessage($response->epayresponse));
 
         // currency
         // description

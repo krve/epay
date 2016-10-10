@@ -2,7 +2,7 @@
 
 namespace Epay\Error;
 
-class Errors
+class ErrorParser
 {
     protected static $errors = [
         '-10006' => [
@@ -232,8 +232,10 @@ class Errors
     /**
      * Get the error message based on the code
      *
-     * @param  string $code
+     * @param $code
+     *
      * @return string
+     * @throws \Epay\Error\ErrorCodeNotFound
      */
     public static function getMessage($code)
     {
