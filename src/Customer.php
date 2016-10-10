@@ -45,7 +45,7 @@ class Customer extends Api
     public function delete()
     {
         $payload = [
-            'subscriptionid' => $customer_id
+            'subscriptionid' => $this->id
         ];
 
         $response = static::request('deletesubscription', $payload);

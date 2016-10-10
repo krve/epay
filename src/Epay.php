@@ -8,14 +8,14 @@ class Epay
 
     protected static $currency_code = '208';
 
-    protected static $merchant_number = '';
+    protected static $merchant_number;
 
-    protected static $password = '';
+    protected static $password;
 
     /**
      * Set the merchant number
      *
-     * @param string $merchant_number
+     * @param $merchant_number
      */
     public static function setMerchantNumber($merchant_number)
     {
@@ -25,7 +25,7 @@ class Epay
     /**
      * Set the api password
      *
-     * @param string $password
+     * @param $password
      */
     public function setPassword($password)
     {
@@ -35,9 +35,8 @@ class Epay
     /**
      * Set the currency used when billing users.
      *
-     * @param  string $currency
-     * @param  string $currency_code
-     * @return void
+     * @param $currency
+     * @param $currency_code
      */
     public function useCurrency($currency, $currency_code)
     {
@@ -48,7 +47,7 @@ class Epay
     /**
      * Get the merchant number currently set
      *
-     * @return string
+     * @return mixed
      */
     public function usesMerchantNumber()
     {
@@ -58,7 +57,7 @@ class Epay
     /**
      * Get the password currently in use
      *
-     * @return string
+     * @return mixed
      */
     public function usesPassword()
     {

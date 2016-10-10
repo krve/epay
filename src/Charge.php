@@ -15,6 +15,7 @@ class Charge extends Api
      * Creates a new charge
      *
      * @param array $options
+     *
      * @return \Epay\Charge
      * @throws \Epay\Error\EpayException
      */
