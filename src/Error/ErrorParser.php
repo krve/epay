@@ -6,220 +6,235 @@ class ErrorParser
 {
     protected static $errors = [
         '-10006' => [
-            'default' => 'Interrupted',
+            'default' => 'The user canceled the EWIRE transaction',
         ],
         '-5604' => [
-            'default' => 'Gebyret kan ikke udregnes for den anvendte korttype.',
+            'default' => 'Fee can not be calculated for the card type used.',
         ],
         '-5603' => [
-            'default' => 'Butikken tillader ikke den anvendte korttype/betalingskort',
+            'default' => 'The store does not allow the type of card.',
         ],
         '-5602' => [
-            'default' => 'Invalid currency code.',
+            'default' => 'An invalid currency code has been used.',
         ],
         '-5601' => [
-            'default' => 'Gebyret kan ikke udregnes for den anvendte korttype.',
+            'default' => 'Fee can not be calculated for the card type used.',
         ],
         '-5600' => [
-            'default' => 'The card number is not set correctly - invalid prefix (must be 6 characters).',
+            'default' => 'The card number is not accurate - invalid prefix (must be 6 characters).',
+        ],
+        '-5516' => [
+            'default' => 'The payment window was closed by user',
         ],
         '-5514' => [
-            'default' => 'Kundens session er enten udløbet, eller også er betalingen ikke startet korrekt.',
+            'default' => 'Customer\'s session has either expired or the payment process has not started correctly.',
         ],
         '-5511' => [
-            'default' => 'An error occured! Start over with your payment.',
+            'default' => 'An error has occurred! Please restart the payment process.',
         ],
         '-5509' => [
-            'default' => 'Du får fejlen Not valid data, når du prøver at åbne Standard Betalingsvinduet. Du får denne fejl, fordi ePay ikke kan finde dataene til transaktionen. Denne fejl opstår, fordi brugeren/kunden har været inaktivt i over 20 minutter!'
+            'default' => 'You get the error Not valid data when you try to open the Standard Payment window. You get this error because ePay can not find the data to the transaction. This error occurs because the user / client has been inactive for more than 20 minutes!'
         ],
         '-5508' => [
-            'default' => 'Du får fejlen No valid domains i created for the company, når du prøver at åbne Standard Betalingsvinduet. Du får denne fejl, fordi du ikke har oprettet et domænet til jeres konto i betalingssystemet. I din administration til betalingssystemet under Instillinger og Betalingssystemet, kan du se det/de domæne(r), som er tilknyttet jeres konto.'
+            'default' => 'You receive the rror "No valid domains created for the company", when you try to open the payment window. You receive this error as you have not entered the domain for your account in the payment system. In the payment system in the menu "Settings" and "Payment system" you can see the domain(s) assigned to your accout.'
         ],
         '-5507' => [
-            'default' => 'Du får fejlen URL not allowed for relaying, når du prøver at åbne Standard Betalingsvinduet. Du får denne fejl, fordi det domæne som du åbner betalingsvinduet fra, ikke er oprettet i betalingssystemet. I din administration til betalingssystemet under Instillinger og Betalingssystemet, kan du se det/de domæne(r), som er tilknyttet jeres konto.'
+            'default' => 'You receive the error "URL not allowed for relaying", when you try to open the payment window. You receive this error as the domain you open up the window from, is not entered in the payment system. In the administration to the payment system from the menu "Settings" and "Payment System", you can enter you domain.'
         ],
         '-5506' => [
-            'default' => 'Du får fejlen Invalid merchantnumber, når du prøver at åbne Standard Betalingsvinduet. Du får denne fejl, fordi det indløsningsnummer / merchantnumber du anvender ikke er oprettet i Betalingssystemet! Tjek derfor om du anvender det rigtige merchantnumber. I din administration til betalingssystemet under Instillinger og Betalingssystemet, kan du se de merchants, som er tilknyttet jeres konto.'
+            'default' => 'You get the error Invalid merchant number, when you try to open the Standard Payment window. You get this error because it indløsningsnummer / merchant number you use is not established in the payment! Check whether you are using the correct merchant number.'
         ],
         '-5505' => [
-            'default' => 'Du får fejlen No cardtypes defined, når du prøver at åbne Standard Betalingsvinduet. Det er fordi, der ikke er sat nogle betalingskort op på jeres konto i betalingssystemet.'
+            'default' => 'You get the error No cardtypes defined when you try to open the Standard Payment window. This is because there are NO cards up to your account in the payment system.'
         ],
         '-5504' => [
-            'default' => 'Du får fejlen Invalid currencycode, når du prøver at åbne Standard Betalingsvinduet. Du får denne fejl, fordi du anvender en ugyldig currencycode. Du kan fra din administration til betalingssystemet under Support og Valutakoder se listen over valutakoder, der kan anvendes.'
+            'default' => 'You get the error Invalid currencycode when you try to open the Standard Payment window. You get this error because you are using an invalid currencycode. You can from your administration to thepayment system in the menu "Support" and "Currency Codes" see the list of currency codes available.'
         ],
         '-5503' => [
-            'default' => 'De data som du sender til betalingsvinduet er ikke korrekte! Du får en beskrivelse af hvilke data, som det er, der ikke er angivet korrekte.'
+            'default' => 'The data that you send to the payment window are not correct! You get a description of the data as it is not listed correctly.'
         ],
         '-5502' => [
-            'default' => 'Du får fejlen Invalid company, når du prøver at åbne Standard Betalingsvinduet. Du får denne fejl, fordi du ikke har aktiveret betalingsvinduet endnu. Du skal aktivere betalingsvinduet fra din administration til betalingssystemet under Instillinger og Betalingsvinduet.'
+            'default' => 'You receive the error "Invalid company" when you try to open the payment window. You receive this error as you have not activated the payment window yet. You have to activate the window from your administration to the payment system from the menu "Settings" and "Payment window".'
         ],
         '-5501' => [
-            'default' => 'Du får fejlen Window not activated, når du prøver at åbne Standard Betalingsvinduet. Du får denne fejl, fordi du ikke har aktiveret betalingsvinduet endnu. Du skal aktivere betalingsvinduet fra din administration til betalingssystemet under Instillinger og Betalingsvinduet.'
+            'default' => 'You receive the error "Window not activated", when you try to open the payment window. You receive this error as you have not activated the payment window yet. You have to activate the window from your administration to the payment system from the menu "Settings" and "Payment window".'
         ],
         '-2003' => [
-            'default' => 'Rejected - Kortudstederens land / region matcher ikke med det land betalingen kommer fra.',
+            'default' => 'Declined - Issuers country / region does not match the country the payment come from.',
         ],
         '-2002' => [
-            'default' => 'Rejected - Ikke sikre betalinger fra land / region accepteres ikke.',
+            'default' => 'Declined - Nonsecure payments from country / region are not accepted.',
         ],
         '-2001' => [
-            'default' => 'Rejected - Betalinger fra land / region accepteres ikke.',
+            'default' => 'Declined - Payments from country / region are not accepted.',
         ],
         '-2000' => [
-            'default' => 'Rejected - Betalinger fra din IP Addresse accepteres ikke.',
+            'default' => 'Declined - Payments from your IP Address are not accepted.',
         ],
         '-1602' => [
-            'defaukt' => 'PBS test-gateway er desværre nede i øjeblikket, prøv igen senere.'
+            'default' => 'PBS test gateway is unfortunately down at the moment, please try again later.'
         ],
         '-1601' => [
-            'defaukt' => 'Svar sendt til betalingssystemet var forventet at være fra en netbank, men er invalid. Invalide data var posted.'
+            'default' => 'The reply sent to the payment system was expected to be from a bank, but is invalid. Invalid data was posted.'
         ],
         '-1600' => [
-            'defaukt' => 'Session fra netbank er allerede brugt. Samme session kan ikke benyttes igen.'
+            'default' => 'The session of banking has already been used. The same session can not be used again.'
+        ],
+        '-1312' => [
+            'default' => 'Declined - Transaction could not be captured - try again or contact PayPal'
         ],
         '-1303' => [
-            'defaukt' => 'Rejected - Betalingen kunne ikke hæves - afvist af EWIRE.'
+            'default' => 'Rejected - Payment could not be increased - rejected by EWIRE.'
         ],
         '-1302' => [
-            'defaukt' => 'Rejected - Fejl i ewire MD5 data. Kontroller at MD5 data er opsat i både EWIRE og ePay.'
+            'default' => 'Rejected - Error ewire MD5 data. Check the MD5 data is posted in both EWIRE and ePay.'
         ],
         '-1301' => [
-            'default' => 'Rejected - EWIRE forretningsnummer var ikke fundet - Kontroller at EWIRE forretningsnummeret er opsat i ePay.'
+            'default' => 'Rejected - EWIRE emrchant number was not found - Check if your EWIRE merchant number is setup at ePay.'
         ],
         '-1300' => [
-            'default' => 'Du forsøger at betale med en betalingsform, som forretningen ikke accepterer. Prøv en anden betalingsform eller kontakt forretningen.'
+            'default' => 'Unknown currency code. You can only use the currency codes that you can see in the menu "Support" and "Currency Codes" in the administration.'
         ],
         '-1200' => [
             'default' => 'Ukendt valutakode. Du kan kun benytte de valutakoder, som du kan se under menupunktet Support og Valutakoder i administrationen.'
         ],
         '-1100' => [
-            'default' => 'Invalid data modtaget hos betalingssystemet. Du skal huske at sende beløbet i mindste enhed / minor units (DKK skal fx. angives i øre), og må ikke bruge komma eller punktum (separatortegn). Derudover skal du være opmærksom på at fremsende felterne cardno, expmonth og expyear, der er nødvendige for at kunne gennemføre en korttransaktion.'
+            'default' => 'Invalid data received at the payment system. You must remember to send the amount in the smallest unit / minor units (eg GBP must. Specified in Pennies), and may not use the comma or dot (separator). Please also remember to send the fields cardno, expmonth and expyear which are also mandatory.'
+        ],
+        '-1024' => [
+            'default' => 'Invalid card number entered. Please correct and try again.'
         ],
         '-1023' => [
-            'default' => 'Transaktionen er allerede hævet'
+            'default' => 'The transaction is already captured'
         ],
         '-1022' => [
-            'default' => 'Transaktionen er afvist, da forretningen har valgt at blokere alle transaktioner, der matcher kortnummeret.'
+            'default' => 'The transaction is declined as the merchant blocks all transactions made by the matching card number.'
         ],
         '-1021' => [
-            'default' => 'De kan på en transaktion max udføres en operation hvert 15 minut. Vent 15 minutter og prøv igen.'
+            'default' => 'An operation every 15 minutes can be performed on a transaction. Please wait 15 minutes and try again.'
         ],
         '-1020' => [
             'default' => 'The transaction is deleted'
         ],
         '-1019' => [
-            'default' => 'Wrong password used for web access!'
+            'default' => 'Invalid password used for webservice access!'
         ],
         '-1018' => [
-            'default' => 'Forkert test-kort benyttet! Du finder de gyldige testoplysninger under menuen Support - Test Oplysninger, når du har logget ind i administrationen til betalingssystemet.'
+            'default' => 'Invalid test-card used! You find the correct test-information from the menu Support - Test Information as you are logged into the payment system.'
         ],
         '-1017' => [
-            'default' => 'Ingen adgang til PCI nødvendig funktion!'
+            'default' => 'No access to PCI required function!'
         ],
         '-1016' => [
-            'default' => 'Der er driftsforstyrelser hos indløseren. Dette er en offline procedure. Vent venligst et kort øjeblik, og prøv igen.'
+            'default' => 'There is disruption at the acquirer. This is an offline procedure. Please wait a moment and try again.'
         ],
         '-1015' => [
-            'default' => 'Valuta kode var ikke fundet. Du skal her undersøg hvilke valuta koder du kan gennemføre betalinger med.'
+            'default' => 'Currency code was not found. You should check your currency code you can accept payments with.'
         ],
         '-1014' => [
-            'default' => 'Rejected - korttypen var ikke valid for 3D secure. Butikken har valgt ikke at acceptere ikke 3D secure betalinger!'
+            'default' => 'The transaction could not be made as 3D secure. The transaction is declined. Try another credit card or contact the merchant.'
         ],
         '-1012' => [
-            'default' => 'Rejected - Cannot renew this card type.'
+            'default' => 'Rejected - Unable to renew this type of card.'
         ],
         '-1011' => [
-            'default' => 'MD5 stempling var ikke valid.'
+            'default' => 'MD5 stamp was not valid.'
         ],
         '-1010' => [
-            'default' => 'Korttype var ikke fundet i den angivne liste af forud definerede korttyper (feltet cardtype). Hvis du ønsker at kunne tage imod denne type kort skal du tilføje korttypen til denne liste.'
+            'default' => 'The cardtype was not found in the specified list of predefined card types (field cardtype). If you wish to receive this type of card you need to add the card type to this list.'
         ],
         '-1009' => [
-            'default' => 'Abonnementsbetaling var ikke fundet.'
+            'default' => 'Subscription was not found.'
         ],
         '-1008' => [
             'default' => 'The transaction could not be found.'
         ],
         '-1007' => [
-            'default' => 'Der er afvigelser i beløb hævet / til rådighed. Undersøg beløbet der hæves / krediteres mod det beløb der er autoriseret / hævet. Bemærk hvis der er tale om en Euroline transaktion, og transaktionen er hævet, kan den først krediteres den efterfølgende dag.'
+            'default' => 'There are differences in the amount captured / available. Please examine the amount of which is captured / credited against the amount authorized / captured. Note if there is a Euroline transaction and the transaction is captured, it can only be credited the following day.'
         ],
         '-1006' => [
-            'default' => 'Product not available.'
+            'default' => 'Product Unavailable.'
         ],
         '-1005' => [
-            'default' => 'Driftsforstyrrelser - prøv igen senere.'
+            'default' => 'Disruption - try again later.'
         ],
         '-1004' => [
             'default' => 'Error code not found.'
         ],
         '-1003' => [
-            'default' => 'Ikke åbent for ipadresse for remote interface.'
+            'default' => 'No access to the ipaddress for remote interface (API).'
         ],
         '-1002' => [
-            'default' => 'The merchant number does not exists.'
+            'default' => 'Merchantnumber was not found in the payment system.'
         ],
         '-1001' => [
-            'default' => 'The order number already exists.'
+            'default' => 'Order number already exists.'
         ],
         '-1000' => [
-            'default' => 'Kommunikations forstyrrelser til PBS.'
+            'default' => 'Communication disorders at the acquirer.'
         ],
         '-23' => [
             'default' => 'PBS test gateway unavailable.'
         ],
         '-4' => [
-            'default' => 'Kommunikations forstyrrelser til PBS.'
+            'default' => 'Communication disorders at the acquirer.'
         ],
         '-3' => [
-            'default' => 'Kommunikations forstyrrelser til PBS.'
+            'default' => 'Communication disorders at the acquirer.'
         ],
         '4000' => [
-            'default' => 'eDankort / PBS 3D secure / Banker - betaling afbrudt af bruger'
+            'default' => 'eDankort / PBS 3D secure / Banking - payment interrupted by user'
         ],
         '4001' => [
-            'default' => 'SOLO - The user cancelled the payment'
+            'default' => 'SOLO - user cut off payment'
         ],
         '4002' => [
-            'default' => 'SOLO - The user was rejected'
+            'default' => 'SOLO - the user was rejected'
         ],
         '4003' => [
-            'default' => 'SOLO - fejl i MAC (MD5)'
+            'default' => 'SOLO - errors in MAC (MD5)'
         ],
         '4100' => [
             'default' => 'Rejected - No answer'
         ],
         '4101' => [
-            'default' => 'Rejected - Ring til kortudstederen'
+            'default' => 'Rejected - Call the card issuer'
         ],
         '4102' => [
-            'default' => 'Rejected - Ring til kortudstederen og behold kortet (svindel)'
+            'default' => 'Rejected - Call the card issuer and keep the card (fraud)'
         ],
         '4103' => [
-            'default' => 'Betalingen blev afvist. Det kan eventuelt skyldes du har tastet forkerte oplysninger. Prøv igen, og hvis fejlen bliver ved med at opstå skal du kontakte forretningen.'
+            'default' => 'The payment was declined. You might have entered wrong information. Please try again or contact the merchant.'
         ],
         '4104' => [
-            'default' => 'Rejected - Systemerror - No answer'
+            'default' => 'Rejected - System Error - no answer'
         ],
         '4105' => [
-            'default' => 'Rejected - Unknown Error'
+            'default' => 'Rejected - unknown error'
         ],
         '4106' => [
-            'default' => 'Rejected - Kort ikke godkendt af VISA / MasterCard / JCB (3D Secure). Du skal prøve igen.'
+            'default' => 'Rejected - Card is not approved by VISA / MasterCard / JCB (3D Secure). Please try again.'
         ],
         '4107' => [
-            'default' => 'Rejected - Kan ikke frigive Euroline (SEB) betalinger (understøttes ikke)'
+            'default' => 'Rejected - Can not release Euro Line (SEB) payment (not supported)'
         ],
         '4108' => [
-            'default' => 'Rejected - Kan ikke forny Euroline (SEB) betalinger (understøttes ikke)'
+            'default' => 'Rejected - Can not renew Euro Line (SEB) payment (not supported)'
         ],
         '4109' => [
-            'default' => 'Rejected - Kort kunne ikke blive godkendt af 3D secure'
+            'default' => 'Rejected - card could not be approved by the 3D secure'
         ],
         '4110' => [
-            'default' => 'Rejected - Der skete en fejl under godkendelse af 3D secure'
+            'default' => 'Rejected - An error occurred during the approval of 3D secure'
         ],
         '4111' => [
-            'default' => 'Rejected - Kortet kunne ikke findes hos 3D secure'
+            'default' => 'Rejected - The card could not be found in 3D secure'
+        ],
+        '4121' => [
+            'default' => 'The transaction was cancelled by Customer at ViaBill'
+        ],
+        '4122' => [
+            'default' => 'The transaction was cancelled by Customer at ViaBill'
         ],
         '10004' => [
             'default' => 'The payment through Danske Bank was interrupted.'
