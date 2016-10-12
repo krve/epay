@@ -46,6 +46,10 @@ class Api
         $merchantNumber = Epay::usesMerchantNumber();
         $password = Epay::usesPassword();
 
+        if ($merchantNumber == null) {
+            throw new \Exception('Merchant number is not defined');
+        }
+
         $client = new \SoapClient(static::$apiURL);
 
         $payload = array_merge([
@@ -75,6 +79,10 @@ class Api
 
         $merchantNumber = Epay::usesMerchantNumber();
         $password = Epay::usesPassword();
+
+        if ($merchantNumber == null) {
+            throw new \Exception('Merchant number is not defined');
+        }
 
         $client = new \SoapClient(static::$apiURL);
 
