@@ -2,7 +2,7 @@
 
 namespace Epay;
 
-use Epay\Error\Errors;
+use Epay\Error\ErrorParser;
 use Epay\Error\EpayException;
 
 class Charge extends Api
@@ -15,6 +15,7 @@ class Charge extends Api
      * Creates a new charge
      *
      * @param array $options
+     *
      * @return \Epay\Charge
      * @throws \Epay\Error\EpayException
      */
@@ -55,6 +56,6 @@ class Charge extends Api
         }
 
         // Throw an error based on the error code
-        throw new EpayException(Errors::getMessage($response->epayresponse));
+        throw new EpayException(ErrorParser::getMessage($response->epayresponse));
     }
 }

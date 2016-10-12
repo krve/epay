@@ -66,6 +66,11 @@ $subscription = Subscription::retrieve($subscription_id);
 $subscription->delete();
 ```
 
+## Current Todo
+
+- Better test coverage
+- Better Epay API Coverage
+- Rewrite base API Class
 
 ## Testing
 

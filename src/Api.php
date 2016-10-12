@@ -30,10 +30,12 @@ class Api
     /**
      * Perform a request
      *
-     * @param  string $method
-     * @param  array  $params
-     * @param  array  $options
+     * @param       $method
+     * @param array $params
+     * @param array $options
+     *
      * @return mixed
+     * @throws \Exception
      */
     public static function request($method, array $params = [], array $options = [])
     {
@@ -58,10 +60,12 @@ class Api
     /**
      * Perform a special subscription request (for their 'other' API)
      *
-     * @param  string $method
-     * @param  array  $params
-     * @param  array  $options
+     * @param       $method
+     * @param array $params
+     * @param array $options
+     *
      * @return mixed
+     * @throws \Exception
      */
     public static function subRequest($method, array $params = [], array $options = [])
     {
@@ -95,8 +99,10 @@ class Api
     /**
      * Validate the data to see if the required keys are set
      *
-     * @param  array  $data
-     * @return void
+     * @param array      $data
+     * @param array|null $requireds
+     *
+     * @throws \Epay\Error\OptionRequired
      */
     public static function validate(array $data, array $requireds = null)
     {
