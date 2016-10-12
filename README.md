@@ -13,10 +13,10 @@ Install the package by doing: `composer require krve/epay`
 - Rewrite base API Class
 
 ## Documentation
-You will probably notice that in the documentation there is several references to `$subscription_id`. This is **NOT** the Epay/Subscription ID but instead it is returned from Epay when first adding your card. This is specific to the user. The reason for the confusing semantics is because this package tries to stay as close to the Stripe PHP Libary as possible.
+You will probably notice that in the documentation there is several references to `$customer_id`. Customer ID references the subscriptionid you get back after having used the Epay Payment window. Don't worry about the mismatch in naming, it's simply called `$customer_id` so it fits the class Epay/Customer.
 
 To set the your Merchant ID, Epay Webservice password and default currency make use of Epay/Epay.
-**This needs to be done BEFORE making any calls to the api**  
+**This needs to be done BEFORE making any calls to the api**
 ```php
 Epay::setMerchantNumber($merchant_number);
 Epay::setPassword('secret');
@@ -26,10 +26,10 @@ Epay::useCurrency('EUR', 978)
 #### Epay/Customer
 You can both retrieve and delete a Customer using the API. See examples below.
 ```php
-$customer = Customer::retrieve($subscription_id);
+$customer = Customer::retrieve($customer_id);
 ```
 ```php
-$customer = Customer::retrieve($subscription_id);
+$customer = Customer::retrieve($customer_id);
 $customer->delete();
 ```
 
@@ -38,16 +38,16 @@ See example below.
 ```php
 $charge = Charge::create([
     'amount' => 1000,
-    'customer' => $subscription_id,
+    'customer' => $customer_id,
     'order' => uniqid(),
     'description' => 'Charge description'
 ]);
-```  
+```
 You also have the ability to specify a custom currency.
 ```php
 $charge = Charge::create([
     'amount' => 1000,
-    'customer' => $subscription_id,
+    'customer' => $customer_id,
     'order' => uniqid(),
     'description' => 'Charge description',
     'currency' => 840,
@@ -68,11 +68,11 @@ $plan = Plan::create([
 You can create a subscription to a plan by doing the following:
 ```php
 $subscription = Subscription::create([
-    'customer' => $subscription_id,
+    'customer' => $customer_id,
     'plan' => $plan_id
 ]);
 ```
-This signs up the user to the plan.  
+This signs up the user to the plan.
 You also have the ability to retrieve and delete a subscription
 ```php
 $subscription = Subscription::retrieve($subscription_id);
@@ -81,7 +81,7 @@ $subscription->delete();
 
 ## Testing
 
-Copy the .env.example to .env and fill out the values.  
+Copy the .env.example to .env and fill out the values.
 Then run `phpunit`
 
 ## Contributing
