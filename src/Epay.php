@@ -27,7 +27,7 @@ class Epay
      *
      * @param $password
      */
-    public function setPassword($password)
+    public static function setPassword($password)
     {
         static::$password = $password;
     }
@@ -38,7 +38,7 @@ class Epay
      * @param $currency
      * @param $currency_code
      */
-    public function useCurrency($currency, $currency_code)
+    public static function useCurrency($currency, $currency_code)
     {
         static::$currency = $currency;
         static::$currency_code = $currency_code;
@@ -49,7 +49,7 @@ class Epay
      *
      * @return mixed
      */
-    public function usesMerchantNumber()
+    public static function usesMerchantNumber()
     {
         return static::$merchant_number;
     }
@@ -59,7 +59,7 @@ class Epay
      *
      * @return mixed
      */
-    public function usesPassword()
+    public static function usesPassword()
     {
         return static::$password;
     }
