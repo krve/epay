@@ -8,9 +8,9 @@ class Epay
 
     protected static $currency_code = '840';
 
-    protected static $merchant_number;
+    protected static $merchant_number = '';
 
-    protected static $password;
+    protected static $password = '';
 
     /**
      * Set the merchant number
