@@ -1,6 +1,6 @@
 <?php
 
-namespace Epay;
+use Epay\Charge;
 
 class ChargeTest extends TestCase
 {
@@ -36,7 +36,7 @@ class ChargeTest extends TestCase
      */
     public function it_throws_an_error_when_missing_options()
     {
-        $charge = Charge::create([
+        Charge::create([
             'amount' => 1000,
             'customer' => getenv('SUBSCRIPTION_ID'),
         ]);

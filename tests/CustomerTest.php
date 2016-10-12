@@ -1,7 +1,5 @@
 <?php
 
-namespace Epay;
-
 use Epay\Customer;
 
 class CustomerTest extends TestCase

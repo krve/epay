@@ -1,8 +1,8 @@
 <?php
 
-namespace Epay;
-
 use Epay\Customer;
+use Epay\Plan;
+use Epay\Subscription;
 
 class SubscriptionTest extends TestCase
 {

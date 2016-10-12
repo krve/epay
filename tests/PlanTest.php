@@ -1,7 +1,5 @@
 <?php
 
-namespace Epay;
-
 use Epay\Plan;
 
 class PlanTest extends TestCase
