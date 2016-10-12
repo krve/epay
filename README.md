@@ -4,7 +4,14 @@ This is a PHP libary for [Epay](http://www.epay.dk/). It mimics the [Stripe PHP 
 
 **Work in progress**
 
+## Current Todo
+
+- Better test coverage
+- Better Epay API Coverage
+- Rewrite base API Class
+
 ## Documentation
+You will probably notice that in the documentation there is several references to `$subscription_id`. This is **NOT** the Epay/Subscription ID but instead it is returned from Epay when first adding your card. This is specific to the user. The reason for the confusing semantics is because this package tries to stay as close to the Stripe PHP Libary as possible.
 
 To set the your Merchant ID, Epay Webservice password and default currency make use of Epay/Epay.
 **This needs to be done BEFORE making any calls to the api**  
@@ -15,9 +22,13 @@ Epay::useCurrency('EUR', 978)
 ```
 
 #### Epay/Customer
-Currently you can only retrieve a customer. See example below.
+You can both retrieve and delete a Customer using the API. See examples below.
 ```php
 $customer = Customer::retrieve($subscription_id);
+```
+```php
+$customer = Customer::retrieve($subscription_id);
+$customer->delete();
 ```
 
 #### Epay/Charge
@@ -66,13 +77,10 @@ $subscription = Subscription::retrieve($subscription_id);
 $subscription->delete();
 ```
 
-## Current Todo
-
-- Better test coverage
-- Better Epay API Coverage
-- Rewrite base API Class
-
 ## Testing
 
 Copy the .env.example to .env and fill out the values.  
 Then run `phpunit`
+
+## Contributing
+If you see anything you think could be improved, feel free to fork and create a PR with your changes. Just remember to keep the same code style.
