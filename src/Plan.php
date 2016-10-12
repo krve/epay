@@ -110,23 +110,6 @@ class Plan extends Api
         }
 
         throw new EpayException(Errors::getMessage($response->epayresponse));
-
-        // currency
-        // description
-        // paymentwindowtext
-        // trialperiod
-        // trialperiodtypeid
-        // trialperiodprice
-        // recurringperiod
-        // recurringperiodtypeid
-        // recurringperiodprice
-        // addfee
-        // expireafterxpayments
-        // expireafterperiod
-        // expireafterperiodtypeid
-        // exactexpirydate
-        // capturedelayperiod
-        // capturedelayperiodtypeid
     }
 
     /**
