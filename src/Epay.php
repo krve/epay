@@ -4,9 +4,9 @@ namespace Epay;
 
 class Epay
 {
-    protected static $currency = 'DKK';
+    protected static $currency = 'USD';
 
-    protected static $currency_code = '208';
+    protected static $currency_code = '840';
 
     protected static $merchant_number = '';
 
