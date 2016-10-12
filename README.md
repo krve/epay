@@ -2,6 +2,8 @@
 
 This is a PHP libary for [Epay](http://www.epay.dk/). It mimics the [Stripe PHP Libary](https://github.com/stripe/stripe-php) to allow for a cleaner and easier to use API.
 
+Install the package by doing: `composer require krve/epay`
+
 **Work in progress**
 
 ## Current Todo
