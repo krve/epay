@@ -12,4 +12,13 @@ class CustomerTest extends TestCase
         $this->assertNotNull($customer);
     }
 
+    /**
+     * @test
+     */
+    public function it_can_fetch_its_subscriptions()
+    {
+        $customer = Customer::retrieve(getenv('CUSTOMER_ID'));
+
+        $this->assertNotNull($customer->subscriptions());
+    }
 }

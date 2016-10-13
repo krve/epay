@@ -89,6 +89,23 @@ class Subscription extends Api
     }
 
     /**
+     * Fetch subscriptions by the customer
+     *
+     * @param  integer $customer_id
+     * @return array
+     */
+    public static function byCustomer($customer_id)
+    {
+        $payload = [
+            'subscription' => [
+                'subscriptionid' => $customer_id,
+            ],
+        ];
+
+        return static::all($payload);
+    }
+
+    /**
      * Find the subscription by the id
      *
      * @param  array $payload

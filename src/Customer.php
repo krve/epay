@@ -58,6 +58,16 @@ class Customer extends Api
     }
 
     /**
+     * Fetch the customer's subscriptions
+     *
+     * @return array
+     */
+    public function subscriptions()
+    {
+        return Subscription::byCustomer($this->id);
+    }
+
+    /**
      * Find a customer by the customer_id
      *
      * @param $customer_id
