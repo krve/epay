@@ -11,12 +11,12 @@ class Subscription extends Api
     protected static $required = ['customer', 'plan'];
 
     /**
-     * Delete the subscription
+     * Cancel the subscription
      *
      * @return bool
      * @throws \Epay\Error\EpayException
      */
-    public function delete()
+    public function cancel()
     {
         $payload = [
             'subscriptionplan' => [

@@ -73,10 +73,10 @@ $subscription = Subscription::create([
 ]);
 ```
 This signs up the user to the plan.
-You also have the ability to retrieve and delete a subscription
+You also have the ability to retrieve and cancel a subscription
 ```php
 $subscription = Subscription::retrieve($subscription_id);
-$subscription->delete();
+$subscription->cancel();
 ```
 
 ## Testing

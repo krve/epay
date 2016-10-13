@@ -20,7 +20,7 @@ class SubscriptionTest extends TestCase
 
         $this->assertNotNull($subscription);
 
-        $subscription->delete();
+        $subscription->cancel();
     }
 
     /** @test */
@@ -39,7 +39,7 @@ class SubscriptionTest extends TestCase
 
         $this->assertNotNull($foundSubscription);
 
-        $subscription->delete();
+        $subscription->cancel();
     }
 
 }
