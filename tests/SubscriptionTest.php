@@ -47,9 +47,9 @@ class SubscriptionTest extends TestCase
      */
     public function it_can_get_all_subscriptions()
     {
-         $subscriptions = Subscription::all();
+        $subscriptions = Subscription::all();
 
-         $this->assertNotNull($subscriptions);
-         $this->assertTrue($subscriptions);
+        $this->assertNotNull($subscriptions);
+        $this->assertTrue($subscriptions);
     }
 }
