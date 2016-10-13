@@ -69,4 +69,21 @@ class SubscriptionTest extends TestCase
 
         $this->assertEquals($subscription->customer()->id, $customer->id);
     }
+
+    /**
+     * @test
+     */
+    public function it_can_fetch_its_plan()
+    {
+        $plan = Plan::retrieve(getenv('PLAN_ID'));
+
+        $customer = Customer::retrieve(getenv('CUSTOMER_ID'));
+
+        $subscription = Subscription::create([
+            'customer' => $customer->id,
+            'plan' => $plan->id
+        ]);
+
+        $this->assertEquals($subscription->plan()->id, $plan->id);
+    }
 }

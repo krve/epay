@@ -2,6 +2,7 @@
 
 namespace Epay;
 
+use Epay\Plan;
 use Epay\Customer;
 use Epay\Error\EpayException;
 
@@ -35,13 +36,23 @@ class Subscription extends Api
     }
 
     /**
-     * Fetch the subscriptions customer
+     * Fetch this subscription's customer
      *
      * @return \Epay\Customer
      */
     public function customer()
     {
         return Customer::retrieve($this->customer);
+    }
+
+    /**
+     * Get belonging plan
+     *
+     * @return \Epay\Plan
+     */
+    public function plan()
+    {
+        return Plan::retrieve($this->plan);
     }
 
     /**
