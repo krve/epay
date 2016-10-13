@@ -2,6 +2,7 @@
 
 namespace Epay;
 
+use Epay\Customer;
 use Epay\Error\EpayException;
 
 class Subscription extends Api
@@ -31,6 +32,16 @@ class Subscription extends Api
         }
 
         throw new EpayException($response->message);
+    }
+
+    /**
+     * Fetch the subscriptions customer
+     *
+     * @return \Epay\Customer
+     */
+    public function customer()
+    {
+        return Customer::retrieve($this->customer);
     }
 
     /**

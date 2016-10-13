@@ -11,7 +11,7 @@ class SubscriptionTest extends TestCase
     {
         $plan = Plan::retrieve(getenv('PLAN_ID'));
 
-        $customer = Customer::retrieve(getenv('SUBSCRIPTION_ID'));
+        $customer = Customer::retrieve(getenv('CUSTOMER_ID'));
 
         $subscription = Subscription::create([
             'customer' => $customer->id,
@@ -28,7 +28,7 @@ class SubscriptionTest extends TestCase
     {
         $plan = Plan::retrieve(getenv('PLAN_ID'));
 
-        $customer = Customer::retrieve(getenv('SUBSCRIPTION_ID'));
+        $customer = Customer::retrieve(getenv('CUSTOMER_ID'));
 
         $subscription = Subscription::create([
             'customer' => $customer->id,

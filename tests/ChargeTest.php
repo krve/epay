@@ -9,7 +9,7 @@ class ChargeTest extends TestCase
     {
         $charge = Charge::create([
             'amount' => 1000,
-            'customer' => getenv('SUBSCRIPTION_ID'),
+            'customer' => getenv('CUSTOMER_ID'),
             'order' => uniqid(),
             'description' => 'Charge description'
         ]);
@@ -22,7 +22,7 @@ class ChargeTest extends TestCase
     {
         $charge = Charge::create([
             'amount' => 1000,
-            'customer' => getenv('SUBSCRIPTION_ID'),
+            'customer' => getenv('CUSTOMER_ID'),
             'order' => uniqid(),
             'currency' => 840,
         ]);
@@ -38,7 +38,7 @@ class ChargeTest extends TestCase
     {
         Charge::create([
             'amount' => 1000,
-            'customer' => getenv('SUBSCRIPTION_ID'),
+            'customer' => getenv('CUSTOMER_ID'),
         ]);
     }
 }
