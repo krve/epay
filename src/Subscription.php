@@ -72,14 +72,33 @@ class Subscription extends Api
     }
 
     /**
+     * Fetch subscriptions by the plan
+     *
+     * @param  integer $plan_id
+     * @return array
+     */
+    public static function byPlan($plan_id)
+    {
+        $payload = [
+            'recurringplan' => [
+                'recurringplanid' => $plan_id,
+            ],
+        ];
+
+        return static::all($payload);
+    }
+
+    /**
      * Find the subscription by the id
+     *
+     * @param  array $payload
      *
      * @return array
      * @throws \Epay\Error\EpayException
      */
-    public static function all()
+    public static function all(array $payload = [])
     {
-        $response = static::subRequest('listsubscriptionplan');
+        $response = static::subRequest('listsubscriptionplan', $payload);
 
         if ($response->result == true && count((array)$response->subscriptionplanlist) > 0) {
             if (is_array($response->subscriptionplanlist->subscriptionplan)) {

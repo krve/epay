@@ -29,4 +29,14 @@ class PlanTest extends TestCase
             'name' => 'Test Plan',
         ]);
     }
+
+    /**
+     * @test
+     */
+    public function it_can_get_its_subscriptions()
+    {
+        $plan = Plan::retrieve(getenv('PLAN_ID'));
+
+        $this->assertNotNull($plan->subscriptions());
+    }
 }

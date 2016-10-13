@@ -2,6 +2,7 @@
 
 namespace Epay;
 
+use Epay\Subscription;
 use Epay\Error\ErrorParser;
 use Epay\Error\EpayException;
 
@@ -67,6 +68,16 @@ class Plan extends Api
         }
 
         throw new EpayException($response->message);
+    }
+
+    /**
+     * Fetch the plan's subscriptions
+     *
+     * @return \Epay\Subscription
+     */
+    public function subscriptions()
+    {
+        return Subscription::byPlan($this->id);
     }
 
     /**
