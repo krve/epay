@@ -32,6 +32,10 @@ $customer = Customer::retrieve($customer_id);
 $customer = Customer::retrieve($customer_id);
 $customer->delete();
 ```
+You can also get the customers subscriptions.
+```php
+$subscriptions = $customer->subscriptions();
+```
 
 #### Epay/Charge
 See example below.
@@ -63,6 +67,10 @@ $plan = Plan::create([
     'name' => 'Test Plan',
 ]);
 ```
+You can also use the Epay\Plan to fetch the plans subscriptions.
+```php
+$subscriptions = $plan->subscriptions();
+```
 
 #### Epay/Subscription
 You can create a subscription to a plan by doing the following:
@@ -85,6 +93,10 @@ $subscriptions = Subscription::all();
 When you have a subscription you also have the ability to fetch the subscriptions customer. This will return a Epay\Customer instance.
 ```php
 $customer = $subscriptions->customer();
+```
+And the plan. This will return a Epay\Plan instance.
+```php
+$plan = $subscriptions->plan();
 ```
 
 ## Testing
