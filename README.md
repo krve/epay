@@ -78,6 +78,14 @@ You also have the ability to retrieve and cancel a subscription
 $subscription = Subscription::retrieve($subscription_id);
 $subscription->cancel();
 ```
+And fetch all subscriptions
+```php
+$subscriptions = Subscription::all();
+```
+When you have a subscription you also have the ability to fetch the subscriptions customer. This will return a Epay\Customer instance.
+```php
+$customer = $subscriptions->customer();
+```
 
 ## Testing
 
