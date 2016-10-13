@@ -52,6 +52,42 @@ class Subscription extends Api
     /**
      * Find the subscription by the id
      *
+     * @return array
+     * @throws \Epay\Error\EpayException
+     */
+    public static function all()
+    {
+        $response = static::subRequest('listsubscriptionplan');
+
+        if ($response->result == true && count((array)$response->subscriptionplanlist) > 0) {
+            if (is_array($response->subscriptionplanlist->subscriptionplan)) {
+                $subscriptions = $response->subscriptionplanlist->subscriptionplan;
+
+                return array_map(function($subscription) {
+                    return new self([
+                        'id' => $subscription->subscriptionplanid,
+                        'plan' => $subscription->recurringplan->recurringplanid,
+                        'customer' => $subscription->subscriptionid,
+                        'created' => $subscription->created,
+                    ]);
+                }, $subscriptions);
+            } else {
+                $subscription = $response->subscriptionplanlist->subscriptionplan;
+                return [new self([
+                    'id' => $subscription->subscriptionplanid,
+                    'plan' => $subscription->recurringplan->recurringplanid,
+                    'customer' => $subscription->subscriptionid,
+                    'created' => $subscription->created,
+                ])];
+            }
+        }
+
+        throw new EpayException($response->message);
+    }
+
+    /**
+     * Find the subscription by the id
+     *
      * @param $subscription_id
      *
      * @return \Epay\Subscription

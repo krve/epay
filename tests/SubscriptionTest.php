@@ -42,4 +42,14 @@ class SubscriptionTest extends TestCase
         $subscription->cancel();
     }
 
+    /**
+     * @test
+     */
+    public function it_can_get_all_subscriptions()
+    {
+         $subscriptions = Subscription::all();
+
+         $this->assertNotNull($subscriptions);
+         $this->assertTrue($subscriptions);
+    }
 }
