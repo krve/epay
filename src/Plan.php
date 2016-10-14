@@ -73,7 +73,7 @@ class Plan extends Api
     /**
      * Fetch the plan's subscriptions
      *
-     * @return \Epay\Subscription
+     * @return array
      */
     public function subscriptions()
     {

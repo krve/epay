@@ -75,6 +75,7 @@ class Subscription extends Api
      * Fetch subscriptions by the plan
      *
      * @param  integer $plan_id
+     *
      * @return array
      */
     public static function byPlan($plan_id)
@@ -92,6 +93,7 @@ class Subscription extends Api
      * Fetch subscriptions by the customer
      *
      * @param  integer $customer_id
+     *
      * @return array
      */
     public static function byCustomer($customer_id)
