@@ -92,11 +92,11 @@ $subscriptions = Subscription::all();
 ```
 When you have a subscription you also have the ability to fetch the subscriptions customer. This will return a Epay\Customer instance.
 ```php
-$customer = $subscriptions->customer();
+$customer = $subscription->customer();
 ```
 And the plan. This will return a Epay\Plan instance.
 ```php
-$plan = $subscriptions->plan();
+$plan = $subscription->plan();
 ```
 
 ## Testing
