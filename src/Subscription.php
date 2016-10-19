@@ -26,7 +26,7 @@ class Subscription extends Api
             ]
         ];
 
-        $response = static::subRequest('deletesubscriptionplan', $payload);
+        $response = static::request('deletesubscriptionplan', $payload);
 
         if ($response->result == true) {
             return true;
@@ -117,7 +117,7 @@ class Subscription extends Api
      */
     public static function all(array $payload = [])
     {
-        $response = static::subRequest('listsubscriptionplan', $payload);
+        $response = static::request('listsubscriptionplan', $payload);
 
         if ($response->result == true && count((array)$response->subscriptionplanlist) > 0) {
             if (is_array($response->subscriptionplanlist->subscriptionplan)) {
@@ -161,7 +161,7 @@ class Subscription extends Api
             ],
         ];
 
-        $response = static::subRequest('getsubscriptionplan', $payload);
+        $response = static::request('getsubscriptionplan', $payload);
 
         if ($response->result == true && count((array)$response->subscriptionplan) > 0) {
             $subscription = $response->subscriptionplan;
@@ -197,7 +197,7 @@ class Subscription extends Api
             ],
         ];
 
-        $response = static::subRequest('listsubscriptionplan', $payload);
+        $response = static::request('listsubscriptionplan', $payload);
 
         if ($response->result == true && count((array)$response->subscriptionplanlist) > 0) {
             $list = $response->subscriptionplanlist;

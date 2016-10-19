@@ -52,56 +52,32 @@ class Api
 
         $client = new \SoapClient(static::$apiURL);
 
-        $payload = array_merge([
-            'merchantnumber' => $merchantNumber,
-            'pwd' => $password,
-            'epayresponse' => ''
-        ], $params);
-
-        return $client->__soapCall($method, [$payload], $options);
-    }
-
-    /**
-     * Perform a special subscription request (for their 'other' API)
-     *
-     * @param       $method
-     * @param array $params
-     * @param array $options
-     *
-     * @return mixed
-     * @throws \Exception
-     */
-    public static function subRequest($method, array $params = [], array $options = [])
-    {
-        if (! static::$apiURL) {
-            throw new \Exception('Epay Api URL not defined');
-        }
-
-        $merchantNumber = Epay::usesMerchantNumber();
-        $password = Epay::usesPassword();
-
-        if ($merchantNumber == null) {
-            throw new \Exception('Merchant number is not defined');
-        }
-
-        $client = new \SoapClient(static::$apiURL);
-
-        $payload = array_merge([
-            'authentication' => [
+        if (preg_match("/ssl\.ditonlinebetalingssystem\.dk/", static::$apiURL) == true) {
+            $payload = array_merge([
                 'merchantnumber' => $merchantNumber,
-                'password' => $password,
-            ],
-        ], $params);
+                'pwd' => $password,
+                'epayresponse' => ''
+            ], $params);
 
-        $payload = [
-            ("${method}request") => $payload
-        ];
+            return $client->__soapCall($method, [$payload], $options);
+        } else if (preg_match("/recurring\.api\.epay\.eu\/v1/", static::$apiURL) == true) {
+            $payload = array_merge([
+                'authentication' => [
+                    'merchantnumber' => $merchantNumber,
+                    'password' => $password,
+                ],
+            ], $params);
 
-        $response = $client->__soapCall($method, [$payload], $options);
+            $payload = [
+                ("${method}request") => $payload
+            ];
 
-        $responseObject = $method . 'Result';
+            $responseObject = $method . 'Result';
 
-        return $response->$responseObject;
+            return $client->__soapCall($method, [$payload], $options)->$responseObject;
+        }
+
+        throw new \Exception('API Url could not be matched.');
     }
 
     /**

@@ -38,7 +38,7 @@ class Plan extends Api
             ],
         ];
 
-        $response = static::subRequest('addrecurringplantosubscription', $payload);
+        $response = static::request('addrecurringplantosubscription', $payload);
 
         if ($response->result == true) {
             return Subscription::getByPlanAndCustomer($this->id, $customer);
@@ -61,7 +61,7 @@ class Plan extends Api
             ]
         ];
 
-        $response = static::subRequest('deleterecurringplan', $payload);
+        $response = static::request('deleterecurringplan', $payload);
 
         if ($response->result == true) {
             return true;
@@ -112,7 +112,7 @@ class Plan extends Api
             ]
         ];
 
-        $response = static::subRequest('createrecurringplan', $payload);
+        $response = static::request('createrecurringplan', $payload);
 
         if ($response->result == true) {
             $id = $response->recurringplan->recurringplanid;
@@ -133,7 +133,7 @@ class Plan extends Api
      */
     public static function retrieve($recurring_plan_id)
     {
-        $response = static::subRequest('getrecurringplan', [
+        $response = static::request('getrecurringplan', [
             'recurringplan' => [
                 'recurringplanid' => $recurring_plan_id
             ]
