@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/krve/epay.svg?branch=master)](https://travis-ci.org/krve/epay)
+
 ## Epay PHP Libary
 
 This is a PHP libary for [Epay](http://www.epay.dk/). It mimics the [Stripe PHP Libary](https://github.com/stripe/stripe-php) to allow for a cleaner and easier to use API.
