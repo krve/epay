@@ -27,8 +27,34 @@ class Plan extends Api
      * @return \Epay\Subscription
      * @throws \Epay\Error\EpayException
      */
-    public function signup($customer)
+    public function signup($customer, $email)
     {
+        $response = static::request('getsubscriber', [
+            'subscriber' => [
+                'subscriptionid' => $customer
+            ],
+        ]);
+
+        if ($response->subscriber == null) {
+            $response = static::request('signupsubscriber', [
+                'recurringplanlist' => [
+                    'recurringplan' => [
+                        'recurringplanid' => $this->id
+                    ],
+                ],
+                'subscription' => [
+                    'subscriptionid' => $customer,
+                    'emailaddress' => $email,
+                ],
+            ]);
+
+            if ($response->result == true) {
+                return Subscription::getByPlanAndCustomer($this->id, $customer);
+            }
+
+            throw new EpayException($response->message);
+        }
+
         $payload = [
             'recurringplan' => [
                 'recurringplanid' => $this->id,

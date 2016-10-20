@@ -10,7 +10,7 @@ class Subscription extends Api
 {
     protected static $apiURL = 'https://recurring.api.epay.eu/v1/RecurringSOAP.svc?singleWsdl';
 
-    protected static $required = ['customer', 'plan'];
+    protected static $required = ['customer', 'plan', 'email'];
 
     /**
      * Cancel the subscription
@@ -68,7 +68,7 @@ class Subscription extends Api
 
         $plan = Plan::retrieve($options['plan']);
 
-        return $plan->signup($options['customer']);
+        return $plan->signup($options['customer'], $options['email']);
     }
 
     /**

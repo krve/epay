@@ -15,7 +15,8 @@ class SubscriptionTest extends TestCase
 
         $subscription = Subscription::create([
             'customer' => $customer->id,
-            'plan' => $plan->id
+            'plan' => $plan->id,
+            'email' => 'test@example.com'
         ]);
 
         $this->assertNotNull($subscription);
@@ -32,7 +33,8 @@ class SubscriptionTest extends TestCase
 
         $subscription = Subscription::create([
             'customer' => $customer->id,
-            'plan' => $plan->id
+            'plan' => $plan->id,
+            'email' => 'test@example.com'
         ]);
 
         $foundSubscription = Subscription::retrieve($subscription->id);
@@ -50,7 +52,6 @@ class SubscriptionTest extends TestCase
         $subscriptions = Subscription::all();
 
         $this->assertNotNull($subscriptions);
-        $this->assertTrue($subscriptions);
     }
 
     /**
@@ -64,7 +65,8 @@ class SubscriptionTest extends TestCase
 
         $subscription = Subscription::create([
             'customer' => $customer->id,
-            'plan' => $plan->id
+            'plan' => $plan->id,
+            'email' => 'test@example.com'
         ]);
 
         $this->assertEquals($subscription->customer()->id, $customer->id);
@@ -81,7 +83,8 @@ class SubscriptionTest extends TestCase
 
         $subscription = Subscription::create([
             'customer' => $customer->id,
-            'plan' => $plan->id
+            'plan' => $plan->id,
+            'email' => 'test@example.com'
         ]);
 
         $this->assertEquals($subscription->plan()->id, $plan->id);
