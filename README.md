@@ -1,4 +1,7 @@
 [![Build Status](https://travis-ci.org/krve/epay.svg?branch=master)](https://travis-ci.org/krve/epay)
+[![Latest Stable Version](https://poser.pugx.org/krve/epay/v/stable)](https://packagist.org/packages/krve/epay)
+[![Latest Unstable Version](https://poser.pugx.org/krve/epay/v/unstable)](https://packagist.org/packages/krve/epay)
+[![License](https://poser.pugx.org/krve/epay/license)](https://packagist.org/packages/krve/epay)
 
 ## Epay PHP Libary
 
