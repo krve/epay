@@ -4,7 +4,11 @@ use Epay\Plan;
 
 class PlanTest extends TestCase
 {
-    /** @test */
+    /**
+     * Test that it you can create a plan
+     *
+     * @test
+     */
     public function it_can_create_a_plan()
     {
         $plan = Plan::create([
@@ -19,6 +23,8 @@ class PlanTest extends TestCase
     }
 
     /**
+     * Make sure that it throws an exception when missing required options
+     *
      * @test
      * @expectedException \Epay\Error\OptionRequired
      */
@@ -31,6 +37,8 @@ class PlanTest extends TestCase
     }
 
     /**
+     * Test that you can retrieve a plan's subscriptions
+     *
      * @test
      */
     public function it_can_get_its_subscriptions()

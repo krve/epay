@@ -4,7 +4,11 @@ use Epay\Charge;
 
 class ChargeTest extends TestCase
 {
-    /** @test */
+    /**
+     * Test that it can create a charge
+     *
+     * @test
+     */
     public function it_can_create_a_charge()
     {
         $charge = Charge::create([
@@ -17,7 +21,11 @@ class ChargeTest extends TestCase
         $this->assertEquals($charge->amount, 1000);
     }
 
-    /** @test */
+    /**
+     * Test that it can specify a custom curreny on a charge
+     *
+     * @test
+     */
     public function it_can_specify_a_custom_currency()
     {
         $charge = Charge::create([
@@ -31,6 +39,8 @@ class ChargeTest extends TestCase
     }
 
     /**
+     * Make sure it throws an error when not specifying the required options
+     *
      * @test
      * @expectedException \Epay\Error\OptionRequired
      */

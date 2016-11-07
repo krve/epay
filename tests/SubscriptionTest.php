@@ -6,7 +6,11 @@ use Epay\Subscription;
 
 class SubscriptionTest extends TestCase
 {
-    /** @test */
+    /**
+     * Test that you can create a subscription
+     *
+     * @test
+     */
     public function it_can_create_a_subscription()
     {
         $plan = Plan::retrieve(getenv('PLAN_ID'));
@@ -24,7 +28,11 @@ class SubscriptionTest extends TestCase
         $subscription->cancel();
     }
 
-    /** @test */
+    /**
+     * Test that you can retrieve a subscription
+     *
+     * @test
+     */
     public function it_can_retrieve_a_subscription()
     {
         $plan = Plan::retrieve(getenv('PLAN_ID'));
@@ -45,6 +53,8 @@ class SubscriptionTest extends TestCase
     }
 
     /**
+     * Test that you can retrieve all subscriptions
+     *
      * @test
      */
     public function it_can_get_all_subscriptions()
@@ -55,6 +65,8 @@ class SubscriptionTest extends TestCase
     }
 
     /**
+     * Test that you can retrieve a subscription's customer
+     *
      * @test
      */
     public function it_can_fetch_its_customer()
@@ -73,6 +85,8 @@ class SubscriptionTest extends TestCase
     }
 
     /**
+     * Test that you can retrieve a subscription's plan
+     *
      * @test
      */
     public function it_can_fetch_its_plan()
