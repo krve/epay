@@ -14,9 +14,6 @@ Install the package by doing: `composer require krve/epay`
 
 ## Current Todo
 
-- Figure out a way to signup a subscriber if he hasn't been signed up before (You need the email for this to work)
-    - Either i fetch the subscriber when you first load the customer
-    - Or i just let the user pass in a email when creating a new subscription
 - Better test coverage
 - Better Epay API Coverage
 - Rewrite base API Class
@@ -115,4 +112,4 @@ Copy the .env.example to .env and fill out the values.
 Then run `phpunit`
 
 ## Contributing
-If you see anything you think could be improved, feel free to fork and create a PR with your changes. Just remember to keep the same code style.
+If you see anything you think could be improved, feel free to fork and create a PR with your changes. Just remember to keep the same code style. (PSR-2)
