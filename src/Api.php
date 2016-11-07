@@ -10,6 +10,11 @@ class Api
 
     protected static $required = [];
 
+    /**
+     * Api constructor.
+     *
+     * @param array $data
+     */
     public function __construct(array $data)
     {
         foreach($data as $key => $value) {
