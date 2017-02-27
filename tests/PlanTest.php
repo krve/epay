@@ -5,16 +5,16 @@ use Epay\Plan;
 class PlanTest extends TestCase
 {
     /**
-     * Test that it you can create a plan
+     * Test that it you can create a plan.
      *
      * @test
      */
     public function it_can_create_a_plan()
     {
         $plan = Plan::create([
-            'amount' => 2000,
+            'amount'   => 2000,
             'interval' => 'yearly',
-            'name' => 'Test Plan',
+            'name'     => 'Test Plan',
         ]);
 
         $this->assertTrue($plan->id != null);
@@ -23,7 +23,7 @@ class PlanTest extends TestCase
     }
 
     /**
-     * Make sure that it throws an exception when missing required options
+     * Make sure that it throws an exception when missing required options.
      *
      * @test
      * @expectedException \Epay\Error\OptionRequired
@@ -32,12 +32,12 @@ class PlanTest extends TestCase
     {
         Plan::create([
             'amount' => 2000,
-            'name' => 'Test Plan',
+            'name'   => 'Test Plan',
         ]);
     }
 
     /**
-     * Test that you can retrieve a plan's subscriptions
+     * Test that you can retrieve a plan's subscriptions.
      *
      * @test
      */

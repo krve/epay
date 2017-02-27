@@ -2,9 +2,8 @@
 
 namespace Epay;
 
-use Epay\Subscription;
-use Epay\Error\ErrorParser;
 use Epay\Error\EpayException;
+use Epay\Error\ErrorParser;
 
 class Plan extends Api
 {
@@ -13,25 +12,26 @@ class Plan extends Api
     protected static $required = ['amount', 'interval', 'name'];
 
     protected static $intervals = [
-        'daily' => 4,
-        'weekly' => 5,
+        'daily'   => 4,
+        'weekly'  => 5,
         'monthly' => 6,
-        'yearly' => 7,
+        'yearly'  => 7,
     ];
 
     /**
-     * Signup a new customer for the plan
+     * Signup a new customer for the plan.
      *
      * @param $customer
      *
-     * @return \Epay\Subscription
      * @throws \Epay\Error\EpayException
+     *
+     * @return \Epay\Subscription
      */
     public function signup($customer, $email)
     {
         $response = static::request('getsubscriber', [
             'subscriber' => [
-                'subscriptionid' => $customer
+                'subscriptionid' => $customer,
             ],
         ]);
 
@@ -39,12 +39,12 @@ class Plan extends Api
             $response = static::request('signupsubscriber', [
                 'recurringplanlist' => [
                     'recurringplan' => [
-                        'recurringplanid' => $this->id
+                        'recurringplanid' => $this->id,
                     ],
                 ],
                 'subscription' => [
                     'subscriptionid' => $customer,
-                    'emailaddress' => $email,
+                    'emailaddress'   => $email,
                 ],
             ]);
 
@@ -60,7 +60,7 @@ class Plan extends Api
                 'recurringplanid' => $this->id,
             ],
             'subscription' => [
-                'subscriptionid' => $customer
+                'subscriptionid' => $customer,
             ],
         ];
 
@@ -74,17 +74,18 @@ class Plan extends Api
     }
 
     /**
-     * Delete the plan
+     * Delete the plan.
+     *
+     * @throws \Epay\Error\EpayException
      *
      * @return bool
-     * @throws \Epay\Error\EpayException
      */
     public function delete()
     {
         $payload = [
             'recurringplan' => [
                 'recurringplanid' => $this->id,
-            ]
+            ],
         ];
 
         $response = static::request('deleterecurringplan', $payload);
@@ -97,7 +98,7 @@ class Plan extends Api
     }
 
     /**
-     * Fetch the plan's subscriptions
+     * Fetch the plan's subscriptions.
      *
      * @return array
      */
@@ -107,13 +108,14 @@ class Plan extends Api
     }
 
     /**
-     * Create a new plan
+     * Create a new plan.
      *
      * @param array $options
      *
-     * @return \Epay\Plan
      * @throws \Epay\Error\EpayException
      * @throws \Exception
+     *
+     * @return \Epay\Plan
      */
     public static function create(array $options)
     {
@@ -129,13 +131,13 @@ class Plan extends Api
 
         $payload = [
             'recurringplan' => [
-                'currency' => $currency,
-                'description' => $options['name'],
-                'recurringperiod' => 1,
+                'currency'              => $currency,
+                'description'           => $options['name'],
+                'recurringperiod'       => 1,
                 'recurringperiodtypeid' => $interval,
-                'recurringperiodprice' => $options['amount'],
-                'addfee' => false,
-            ]
+                'recurringperiodprice'  => $options['amount'],
+                'addfee'                => false,
+            ],
         ];
 
         $response = static::request('createrecurringplan', $payload);
@@ -150,28 +152,29 @@ class Plan extends Api
     }
 
     /**
-     * Find the specified recurring plan
+     * Find the specified recurring plan.
      *
      * @param $recurring_plan_id
      *
-     * @return \Epay\Plan
      * @throws \Epay\Error\EpayException
+     *
+     * @return \Epay\Plan
      */
     public static function retrieve($recurring_plan_id)
     {
         $response = static::request('getrecurringplan', [
             'recurringplan' => [
-                'recurringplanid' => $recurring_plan_id
-            ]
+                'recurringplanid' => $recurring_plan_id,
+            ],
         ]);
 
-        if ($response->result == true && count((array)$response->recurringplan) > 0) {
+        if ($response->result == true && count((array) $response->recurringplan) > 0) {
             $plan = $response->recurringplan;
 
             return new self([
-                'id' => $recurring_plan_id,
-                'name' => $plan->description,
-                'currency' => $plan->currency
+                'id'       => $recurring_plan_id,
+                'name'     => $plan->description,
+                'currency' => $plan->currency,
             ]);
         }
 

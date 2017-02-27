@@ -5,7 +5,7 @@ use Epay\Customer;
 class CustomerTest extends TestCase
 {
     /**
-     * Make sure that it can retrieve a customer
+     * Make sure that it can retrieve a customer.
      *
      * @test
      */
@@ -17,7 +17,7 @@ class CustomerTest extends TestCase
     }
 
     /**
-     * Make sure that you can retrieve a customer's subscriptions
+     * Make sure that you can retrieve a customer's subscriptions.
      *
      * @test
      */

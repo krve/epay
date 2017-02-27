@@ -17,13 +17,13 @@ class Api
      */
     public function __construct(array $data)
     {
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             $this->$key = $value;
         }
     }
 
     /**
-     * Set the API Url
+     * Set the API Url.
      *
      * @param string $url
      */
@@ -33,18 +33,19 @@ class Api
     }
 
     /**
-     * Perform a request
+     * Perform a request.
      *
      * @param       $method
      * @param array $params
      * @param array $options
      *
-     * @return mixed
      * @throws \Exception
+     *
+     * @return mixed
      */
     public static function request($method, array $params = [], array $options = [])
     {
-        if (! static::$apiURL) {
+        if (!static::$apiURL) {
             throw new \Exception('Epay Api URL not defined');
         }
 
@@ -60,24 +61,24 @@ class Api
         if (preg_match("/ssl\.ditonlinebetalingssystem\.dk/", static::$apiURL) == true) {
             $payload = array_merge([
                 'merchantnumber' => $merchantNumber,
-                'pwd' => $password,
-                'epayresponse' => ''
+                'pwd'            => $password,
+                'epayresponse'   => '',
             ], $params);
 
             return $client->__soapCall($method, [$payload], $options);
-        } else if (preg_match("/recurring\.api\.epay\.eu\/v1/", static::$apiURL) == true) {
+        } elseif (preg_match("/recurring\.api\.epay\.eu\/v1/", static::$apiURL) == true) {
             $payload = array_merge([
                 'authentication' => [
                     'merchantnumber' => $merchantNumber,
-                    'password' => $password,
+                    'password'       => $password,
                 ],
             ], $params);
 
             $payload = [
-                ("${method}request") => $payload
+                ("${method}request") => $payload,
             ];
 
-            $responseObject = $method . 'Result';
+            $responseObject = $method.'Result';
 
             return $client->__soapCall($method, [$payload], $options)->$responseObject;
         }
@@ -86,7 +87,7 @@ class Api
     }
 
     /**
-     * Validate the data to see if the required keys are set
+     * Validate the data to see if the required keys are set.
      *
      * @param array      $data
      * @param array|null $requireds
@@ -99,12 +100,12 @@ class Api
 
         $dataKeys = array_keys($data);
 
-        foreach($requireds as $required) {
+        foreach ($requireds as $required) {
             if (in_array($required, $dataKeys) && $data[$required] == null) {
                 throw new OptionRequired($required);
             }
 
-            if (! in_array($required, $dataKeys)) {
+            if (!in_array($required, $dataKeys)) {
                 throw new OptionRequired($required);
             }
         }

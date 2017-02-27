@@ -2,8 +2,6 @@
 
 namespace Epay;
 
-use Epay\Plan;
-use Epay\Customer;
 use Epay\Error\EpayException;
 
 class Subscription extends Api
@@ -13,17 +11,18 @@ class Subscription extends Api
     protected static $required = ['customer', 'plan', 'email'];
 
     /**
-     * Cancel the subscription
+     * Cancel the subscription.
+     *
+     * @throws \Epay\Error\EpayException
      *
      * @return bool
-     * @throws \Epay\Error\EpayException
      */
     public function cancel()
     {
         $payload = [
             'subscriptionplan' => [
                 'subscriptionplanid' => $this->id,
-            ]
+            ],
         ];
 
         $response = static::request('deletesubscriptionplan', $payload);
@@ -36,7 +35,7 @@ class Subscription extends Api
     }
 
     /**
-     * Fetch this subscription's customer
+     * Fetch this subscription's customer.
      *
      * @return \Epay\Customer
      */
@@ -46,7 +45,7 @@ class Subscription extends Api
     }
 
     /**
-     * Get belonging plan
+     * Get belonging plan.
      *
      * @return \Epay\Plan
      */
@@ -56,7 +55,7 @@ class Subscription extends Api
     }
 
     /**
-     * Create a new subscription
+     * Create a new subscription.
      *
      * @param array $options
      *
@@ -72,9 +71,9 @@ class Subscription extends Api
     }
 
     /**
-     * Fetch subscriptions by the plan
+     * Fetch subscriptions by the plan.
      *
-     * @param  integer $plan_id
+     * @param int $plan_id
      *
      * @return array
      */
@@ -90,9 +89,9 @@ class Subscription extends Api
     }
 
     /**
-     * Fetch subscriptions by the customer
+     * Fetch subscriptions by the customer.
      *
-     * @param  integer $customer_id
+     * @param int $customer_id
      *
      * @return array
      */
@@ -108,36 +107,38 @@ class Subscription extends Api
     }
 
     /**
-     * Find the subscription by the id
+     * Find the subscription by the id.
      *
-     * @param  array $payload
+     * @param array $payload
+     *
+     * @throws \Epay\Error\EpayException
      *
      * @return array
-     * @throws \Epay\Error\EpayException
      */
     public static function all(array $payload = [])
     {
         $response = static::request('listsubscriptionplan', $payload);
 
-        if ($response->result == true && count((array)$response->subscriptionplanlist) > 0) {
+        if ($response->result == true && count((array) $response->subscriptionplanlist) > 0) {
             if (is_array($response->subscriptionplanlist->subscriptionplan)) {
                 $subscriptions = $response->subscriptionplanlist->subscriptionplan;
 
-                return array_map(function($subscription) {
+                return array_map(function ($subscription) {
                     return new self([
-                        'id' => $subscription->subscriptionplanid,
-                        'plan' => $subscription->recurringplan->recurringplanid,
+                        'id'       => $subscription->subscriptionplanid,
+                        'plan'     => $subscription->recurringplan->recurringplanid,
                         'customer' => $subscription->subscriptionid,
-                        'created' => $subscription->created,
+                        'created'  => $subscription->created,
                     ]);
                 }, $subscriptions);
             } else {
                 $subscription = $response->subscriptionplanlist->subscriptionplan;
+
                 return [new self([
-                    'id' => $subscription->subscriptionplanid,
-                    'plan' => $subscription->recurringplan->recurringplanid,
+                    'id'       => $subscription->subscriptionplanid,
+                    'plan'     => $subscription->recurringplan->recurringplanid,
                     'customer' => $subscription->subscriptionid,
-                    'created' => $subscription->created,
+                    'created'  => $subscription->created,
                 ])];
             }
         }
@@ -146,31 +147,32 @@ class Subscription extends Api
     }
 
     /**
-     * Find the subscription by the id
+     * Find the subscription by the id.
      *
      * @param $subscription_id
      *
-     * @return \Epay\Subscription
      * @throws \Epay\Error\EpayException
+     *
+     * @return \Epay\Subscription
      */
     public static function retrieve($subscription_id)
     {
         $payload = [
             'subscriptionplan' => [
-                'subscriptionplanid' => $subscription_id
+                'subscriptionplanid' => $subscription_id,
             ],
         ];
 
         $response = static::request('getsubscriptionplan', $payload);
 
-        if ($response->result == true && count((array)$response->subscriptionplan) > 0) {
+        if ($response->result == true && count((array) $response->subscriptionplan) > 0) {
             $subscription = $response->subscriptionplan;
 
             return new self([
-                'id' => $subscription_id,
-                'plan' => $subscription->recurringplanid,
+                'id'       => $subscription_id,
+                'plan'     => $subscription->recurringplanid,
                 'customer' => $subscription->subscriptionid,
-                'created' => $subscription->created,
+                'created'  => $subscription->created,
             ]);
         }
 
@@ -178,13 +180,14 @@ class Subscription extends Api
     }
 
     /**
-     * Find the subscription by the plan and the customer
+     * Find the subscription by the plan and the customer.
      *
      * @param $plan
      * @param $customer
      *
-     * @return \Epay\Subscription
      * @throws \Epay\Error\EpayException
+     *
+     * @return \Epay\Subscription
      */
     public static function getByPlanAndCustomer($plan, $customer)
     {
@@ -193,13 +196,13 @@ class Subscription extends Api
                 'recurringplanid' => $plan,
             ],
             'subscription' => [
-                'subscriptionid' => $customer
+                'subscriptionid' => $customer,
             ],
         ];
 
         $response = static::request('listsubscriptionplan', $payload);
 
-        if ($response->result == true && count((array)$response->subscriptionplanlist) > 0) {
+        if ($response->result == true && count((array) $response->subscriptionplanlist) > 0) {
             $list = $response->subscriptionplanlist;
             $subscription = $list->subscriptionplan;
 

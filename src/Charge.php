@@ -2,8 +2,8 @@
 
 namespace Epay;
 
-use Epay\Error\ErrorParser;
 use Epay\Error\EpayException;
+use Epay\Error\ErrorParser;
 
 class Charge extends Api
 {
@@ -12,12 +12,13 @@ class Charge extends Api
     protected static $required = ['amount', 'order', 'customer'];
 
     /**
-     * Creates a new charge
+     * Creates a new charge.
      *
      * @param array $options
      *
-     * @return \Epay\Charge
      * @throws \Epay\Error\EpayException
+     *
+     * @return \Epay\Charge
      */
     public static function create(array $options)
     {
@@ -30,14 +31,14 @@ class Charge extends Api
         // Create the payload
         $payload = [
             'subscriptionid' => $options['customer'],
-            'orderid' => $options['order'],
-            'amount' => $options['amount'],
-            'currency' => $currency,
+            'orderid'        => $options['order'],
+            'amount'         => $options['amount'],
+            'currency'       => $currency,
             'instantcapture' => $instant_capture,
-            'description' => $description,
-            'fraud' => '',
-            'transactionid' => '',
-            'pbsresponse' => '',
+            'description'    => $description,
+            'fraud'          => '',
+            'transactionid'  => '',
+            'pbsresponse'    => '',
         ];
 
         $response = static::request('authorize', $payload);
@@ -45,13 +46,13 @@ class Charge extends Api
         if ($response->authorizeResult == true) {
             // Return a new instance of it self
             return new self([
-                'amount' => $options['amount'],
-                'currency' => $currency,
-                'customer' => $options['customer'],
+                'amount'          => $options['amount'],
+                'currency'        => $currency,
+                'customer'        => $options['customer'],
                 'instant_capture' => $instant_capture,
-                'order' => $options['order'],
-                'transaction_id' => $response->transactionid,
-                'description' => $description
+                'order'           => $options['order'],
+                'transaction_id'  => $response->transactionid,
+                'description'     => $description,
             ]);
         }
 
