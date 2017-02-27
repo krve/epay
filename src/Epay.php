@@ -13,7 +13,7 @@ class Epay
     protected static $password = '';
 
     /**
-     * Set the merchant number
+     * Set the merchant number.
      *
      * @param $merchant_number
      */
@@ -23,7 +23,7 @@ class Epay
     }
 
     /**
-     * Set the api password
+     * Set the api password.
      *
      * @param $password
      */
@@ -45,7 +45,7 @@ class Epay
     }
 
     /**
-     * Get the merchant number currently set
+     * Get the merchant number currently set.
      *
      * @return mixed
      */
@@ -55,7 +55,7 @@ class Epay
     }
 
     /**
-     * Get the password currently in use
+     * Get the password currently in use.
      *
      * @return mixed
      */

@@ -4,4 +4,6 @@ namespace Epay\Error;
 
 use Exception;
 
-class ErrorCodeNotFound extends Exception {}
+class ErrorCodeNotFound extends Exception
+{
+}

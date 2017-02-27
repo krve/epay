@@ -7,7 +7,7 @@ use Epay\Subscription;
 class SubscriptionTest extends TestCase
 {
     /**
-     * Test that you can create a subscription
+     * Test that you can create a subscription.
      *
      * @test
      */
@@ -19,8 +19,8 @@ class SubscriptionTest extends TestCase
 
         $subscription = Subscription::create([
             'customer' => $customer->id,
-            'plan' => $plan->id,
-            'email' => 'test@example.com'
+            'plan'     => $plan->id,
+            'email'    => 'test@example.com',
         ]);
 
         $this->assertNotNull($subscription);
@@ -29,7 +29,7 @@ class SubscriptionTest extends TestCase
     }
 
     /**
-     * Test that you can retrieve a subscription
+     * Test that you can retrieve a subscription.
      *
      * @test
      */
@@ -41,8 +41,8 @@ class SubscriptionTest extends TestCase
 
         $subscription = Subscription::create([
             'customer' => $customer->id,
-            'plan' => $plan->id,
-            'email' => 'test@example.com'
+            'plan'     => $plan->id,
+            'email'    => 'test@example.com',
         ]);
 
         $foundSubscription = Subscription::retrieve($subscription->id);
@@ -53,7 +53,7 @@ class SubscriptionTest extends TestCase
     }
 
     /**
-     * Test that you can retrieve all subscriptions
+     * Test that you can retrieve all subscriptions.
      *
      * @test
      */
@@ -65,7 +65,7 @@ class SubscriptionTest extends TestCase
     }
 
     /**
-     * Test that you can retrieve a subscription's customer
+     * Test that you can retrieve a subscription's customer.
      *
      * @test
      */
@@ -77,15 +77,15 @@ class SubscriptionTest extends TestCase
 
         $subscription = Subscription::create([
             'customer' => $customer->id,
-            'plan' => $plan->id,
-            'email' => 'test@example.com'
+            'plan'     => $plan->id,
+            'email'    => 'test@example.com',
         ]);
 
         $this->assertEquals($subscription->customer()->id, $customer->id);
     }
 
     /**
-     * Test that you can retrieve a subscription's plan
+     * Test that you can retrieve a subscription's plan.
      *
      * @test
      */
@@ -97,8 +97,8 @@ class SubscriptionTest extends TestCase
 
         $subscription = Subscription::create([
             'customer' => $customer->id,
-            'plan' => $plan->id,
-            'email' => 'test@example.com'
+            'plan'     => $plan->id,
+            'email'    => 'test@example.com',
         ]);
 
         $this->assertEquals($subscription->plan()->id, $plan->id);

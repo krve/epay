@@ -2,8 +2,8 @@
 
 namespace Epay;
 
-use Epay\Error\ErrorParser;
 use Epay\Error\EpayException;
+use Epay\Error\ErrorParser;
 
 class Customer extends Api
 {
@@ -27,25 +27,26 @@ class Customer extends Api
         $this->card_type_id = $card_type_id;
 
         // Create an array based on the amount of transactions
-        if (count((array)$transactions) == 0) {
+        if (count((array) $transactions) == 0) {
             $this->transactions = [];
-        } else if (count($transactions->TransactionInformationType) == 1) {
-            $this->transactions =[$transactions->TransactionInformationType];
-        } else if (count($transactions->TransactionInformationType) > 1) {
+        } elseif (count($transactions->TransactionInformationType) == 1) {
+            $this->transactions = [$transactions->TransactionInformationType];
+        } elseif (count($transactions->TransactionInformationType) > 1) {
             $this->transactions = $transactions->TransactionInformationType;
         }
     }
 
     /**
-     * Delete the customer
+     * Delete the customer.
+     *
+     * @throws \Epay\Error\EpayException
      *
      * @return bool
-     * @throws \Epay\Error\EpayException
      */
     public function delete()
     {
         $payload = [
-            'subscriptionid' => $this->id
+            'subscriptionid' => $this->id,
         ];
 
         $response = static::request('deletesubscription', $payload);
@@ -58,7 +59,7 @@ class Customer extends Api
     }
 
     /**
-     * Fetch the customer's subscriptions
+     * Fetch the customer's subscriptions.
      *
      * @return array
      */
@@ -68,22 +69,23 @@ class Customer extends Api
     }
 
     /**
-     * Find a customer by the customer_id
+     * Find a customer by the customer_id.
      *
      * @param $customer_id
      *
-     * @return \Epay\Customer
      * @throws \Epay\Error\EpayException
+     *
+     * @return \Epay\Customer
      */
     public static function retrieve($customer_id)
     {
         $payload = [
-            'subscriptionid' => $customer_id
+            'subscriptionid' => $customer_id,
         ];
 
         $response = static::request('getsubscriptions', $payload);
 
-        if ($response->getsubscriptionsResult == true && count((array)$response->subscriptionAry) > 0) {
+        if ($response->getsubscriptionsResult == true && count((array) $response->subscriptionAry) > 0) {
             $type = $response->subscriptionAry->SubscriptionInformationType;
 
             return new self(
