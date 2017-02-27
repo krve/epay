@@ -17,7 +17,7 @@ class Api
      */
     public function __construct(array $data)
     {
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             $this->$key = $value;
         }
     }
@@ -65,7 +65,7 @@ class Api
             ], $params);
 
             return $client->__soapCall($method, [$payload], $options);
-        } else if (preg_match("/recurring\.api\.epay\.eu\/v1/", static::$apiURL) == true) {
+        } elseif (preg_match("/recurring\.api\.epay\.eu\/v1/", static::$apiURL) == true) {
             $payload = array_merge([
                 'authentication' => [
                     'merchantnumber' => $merchantNumber,
@@ -99,7 +99,7 @@ class Api
 
         $dataKeys = array_keys($data);
 
-        foreach($requireds as $required) {
+        foreach ($requireds as $required) {
             if (in_array($required, $dataKeys) && $data[$required] == null) {
                 throw new OptionRequired($required);
             }
