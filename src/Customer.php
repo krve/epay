@@ -29,9 +29,9 @@ class Customer extends Api
         // Create an array based on the amount of transactions
         if (count((array)$transactions) == 0) {
             $this->transactions = [];
-        } else if (count($transactions->TransactionInformationType) == 1) {
+        } elseif (count($transactions->TransactionInformationType) == 1) {
             $this->transactions =[$transactions->TransactionInformationType];
-        } else if (count($transactions->TransactionInformationType) > 1) {
+        } elseif (count($transactions->TransactionInformationType) > 1) {
             $this->transactions = $transactions->TransactionInformationType;
         }
     }

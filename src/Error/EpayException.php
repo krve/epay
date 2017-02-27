@@ -4,10 +4,12 @@ namespace Epay\Error;
 
 use Exception;
 
-class EpayException extends Exception {
+class EpayException extends Exception
+{
     protected $epayCode;
 
-    public function __construct($message = "", $epayCode = null, $code = 0, Exception $previous = null) {
+    public function __construct($message = "", $epayCode = null, $code = 0, Exception $previous = null)
+    {
         $this->epayCode = $epayCode;
 
         parent::__construct($message, $code, $previous);
@@ -18,7 +20,8 @@ class EpayException extends Exception {
      *
      * @return null
      */
-    public function getEpayCode() {
+    public function getEpayCode()
+    {
         return $this->epayCode;
     }
 }
