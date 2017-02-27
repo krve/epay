@@ -123,7 +123,7 @@ class Subscription extends Api
             if (is_array($response->subscriptionplanlist->subscriptionplan)) {
                 $subscriptions = $response->subscriptionplanlist->subscriptionplan;
 
-                return array_map(function($subscription) {
+                return array_map(function ($subscription) {
                     return new self([
                         'id' => $subscription->subscriptionplanid,
                         'plan' => $subscription->recurringplan->recurringplanid,
