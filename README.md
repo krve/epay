@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/krve/epay.svg?branch=master)](https://travis-ci.org/krve/epay)
+[![StyleCI](https://styleci.io/repos/69878719/shield?branch=master)](https://styleci.io/repos/69878719)
 [![Latest Stable Version](https://poser.pugx.org/krve/epay/v/stable)](https://packagist.org/packages/krve/epay)
 [![Latest Unstable Version](https://poser.pugx.org/krve/epay/v/unstable)](https://packagist.org/packages/krve/epay)
 [![License](https://poser.pugx.org/krve/epay/license)](https://packagist.org/packages/krve/epay)
